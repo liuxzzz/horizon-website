@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import "./globals.css";
+import "../../public/globals.css";
+import Link from "next/link";
 
 const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
+  src: "../../public/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
   weight: "100 900",
 });
 const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
+  src: "../../public/fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
 });
@@ -28,7 +29,16 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {children}
+        <main>
+          {/* Include shared UI here e.g. a header or sidebar */}
+          <nav>
+            <Link href="/">Home</Link>
+            <Link href="/blog">Blog</Link>
+            <Link href="/about">About</Link>
+          </nav>
+
+          {children}
+        </main>
       </body>
     </html>
   );
